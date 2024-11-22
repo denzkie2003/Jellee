@@ -10,10 +10,6 @@
     {
       "src": "/api/v1/novelfire/(.*)",
       "dest": "api/index.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "api/index.js"
     }
   ]
 }

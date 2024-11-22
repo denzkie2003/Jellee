@@ -13,7 +13,14 @@ app.get("/", (c) => {
 
 app.all('*', (c) => {
   console.log(`Request received: ${c.req.method} ${c.req.url}`);
-  return c.text('404 Not Found', 404);
+  return c.json({ success: false, message: "404 Not Found" }, 404);
+});
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
 });
 
 // Create an HTTP server and pass requests to `app.fetch`
