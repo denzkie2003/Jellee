@@ -1,0 +1,28 @@
+{
+  "name": "jellee",
+  "version": "1.0.0",
+  "description": "Node.js API for scrapping data from various novel sites",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denzkie2003/Jellee.git"
+  },
+  "bugs": {
+    "url": "https://github.com/denzkie2003/Jellee/issues"
+  },
+  "homepage": "https://github.com/denzkie2003/Jellee#readme",
+  "author": "JelLee",
+  "license": "ISC",
+  "dependencies": {
+    "@hono/node-server": "^1.13.7",
+    "axios": "^1.7.7",
+    "cheerio": "^1.0.0",
+    "hono": "^4.6.11"
+  },
+  "devDependencies": {}
+}
