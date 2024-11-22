@@ -8,7 +8,7 @@
   ],
   "routes": [
     {
-      "src": "/api/v1/novelfire/(.*)",
+      "src": "/(.*)",
       "dest": "api/index.js"
     },
     {
