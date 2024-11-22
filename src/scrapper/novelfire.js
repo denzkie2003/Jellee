@@ -2,12 +2,16 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 
 const BASE_URL = "https://novelfire.net/";
+const HEADERS = {
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+  'Referer': 'https://novelfire.net/'
+};
 
 export async function scrapeLatestChapter(page){
   const url = `${BASE_URL}latest-release-novels?page=${page}`;
   
   try{
-    const { data: html } = await axios.get(url);
+    const { data: html } = await axios.get(url, { headers: HEADERS });
     const $ = cheerio.load(html);
     const novels = [];
     
@@ -33,7 +37,7 @@ export async function scrapeLatestChapter(page){
 export async function scrapeLatestNovels(page){
   const url = `${BASE_URL}genre-all/sort-new/status-all/all-novel?page=${page}`;
   try{
-    const { data: html } = await axios.get(url);
+    const { data: html } = await axios.get(url, { headers: HEADERS });
     const $ = cheerio.load(html);
     const novels = [];
     
@@ -55,7 +59,7 @@ export async function scrapeLatestNovels(page){
 export async function scrapeCompletedNovels(page){
   const url = `${BASE_URL}genre-all/sort-new/status-completed/all-novel?page=${page}`;
   try{
-    const { data: html } = await axios.get(url);
+    const { data: html } = await axios.get(url, { headers: HEADERS });
     const $ = cheerio.load(html);
     const novels = [];
     
@@ -78,7 +82,7 @@ export async function scrapeRankingNovels(ranking) {
   const url = `${BASE_URL}${ranking}`;
   
   try {
-    const { data: html } = await axios.get(url);
+    const { data: html } = await axios.get(url, { headers: HEADERS });
     const $ = cheerio.load(html);
     const novels = [];
 
@@ -140,7 +144,7 @@ export async function scrapeSearchResults(searchTerm) {
   try {
     // Make the GET request
     const { data } = await axios.get(url, {
-      params: { inputContent: searchTerm },
+      params: { inputContent: searchTerm }, headers: HEADERS
     });
 
     // Load the response HTML into cheerio
